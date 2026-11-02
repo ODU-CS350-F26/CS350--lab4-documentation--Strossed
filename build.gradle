@@ -24,14 +24,14 @@ task reports {
 }
 
 gitPublish {
-    repoUri = 'https://github.com/ODU-CS350-F26/CS350--lab4-documentation--Strossed.git'
+    repoUri = 'git@github.com:ODU-CS350-F26/CS350--lab4-documentation--Strossed.git'
     branch = 'gh-pages'
 
     contents {
         from(layout.buildDirectory.dir('reports'))
     }
 
-    commitMessage = 'Publish generated project reports'
+    commitMessage = 'Publish project reports'
 }
 
 gitPublishCopy.dependsOn reports
