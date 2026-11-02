@@ -1,3 +1,5 @@
+ [Reports](https://odu-cs350-f26.github.io/CS350--lab4-documentation--Strossed/)
+ 
 # WordCounter
 
 There are a number of applications in which it is useful to know what the most
@@ -93,4 +95,3 @@ The 20 most common words are:
   ```
 
   which, overall, seems like a pretty reasonable list.
-  
