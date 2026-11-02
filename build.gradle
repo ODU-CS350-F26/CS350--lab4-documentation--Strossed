@@ -8,6 +8,38 @@ repositories {
     mavenCentral()
 }
 
+task copyHtmlReports(type: Copy) {
+    from 'src/main/html'
+    into layout.buildDirectory.dir('reports')
+}
+
+task copyJavadocReports(type: Copy) {
+    dependsOn javadoc
+    from layout.buildDirectory.dir('docs/javadoc')
+    into layout.buildDirectory.dir('reports/javadoc')
+}
+
+task reports {
+    dependsOn 'build', copyHtmlReports, copyJavadocReports
+}
+
+gitPublish {
+    repoUri = 'https://github.com/ODU-CS350-F26/CS350--lab4-documentation--Strossed.git'
+    branch = 'gh-pages'
+
+    contents {
+        from(layout.buildDirectory.dir('reports'))
+    }
+
+    commitMessage = 'Publish generated project reports'
+}
+
+gitPublishCopy.dependsOn reports
+
+task deployReports {
+    dependsOn reports
+    dependsOn gitPublishPush
+}
 
 java {
     sourceCompatibility = JavaVersion.toVersion(11)
